@@ -1,18 +1,34 @@
-# FEA COACH APP v0.5 – silnik diagnozy trenerskiej
+# FEA COACH APP v1.1
 
-Nowości v0.5:
-- analiza problemu w osiach PER / DEC / EXE / PRESSURE / TRANSFER / MENTAL,
-- profil R/W/P/G nie jest traktowany wyłącznie jako średnia,
-- silnik opisuje prawdopodobną przyczynę problemu i zalecany kierunek kolejnej jednostki,
-- dobór środków uwzględnia jednocześnie opis problemu, obserwację trenera, obszar analizy i najsłabszy element R/W/P/G,
-- PROGRESS / CONTINUE / REGRESS / CHANGE wpływa na ponowny dobór kolejnej jednostki,
-- przy co najmniej 2 ocenionych użyciach historia skuteczności może wspierać kolejność kandydatów, ale nie zastępuje dopasowania do problemu,
-- „Analizuj ponownie” korzysta z aktualnej Biblioteki FEA/Motoryki.
+Docelowa wersja pierwszego pełnego workflow FEA COACH SYSTEM.
+
+## Główny obieg
+Mecz → diagnoza → priorytet → poniedziałek → Training Score → karta analizy → środa → Training Score → karta analizy → piątek → Training Score → kolejny mecz → weryfikacja transferu i pamięć problemu.
+
+## v1.1
+- Dashboard „Co teraz wymaga decyzji trenera?”
+- status całego mikrocyklu i postęp workflow
+- podsumowanie trendu R/W/P/G
+- rozdzielenie wyniku treningowego od weryfikacji meczowej
+- automatyczne archiwizowanie poprzedniego mikrocyklu przy rozpoczęciu nowej analizy meczu
+- pamięć problemów między mikrocyklami
+- dynamiczna adaptacja PON → ŚR → PT
+- karta analizy przed zatwierdzeniem kolejnej jednostki
+- biblioteki FEA i Motoryki, ręczne podmiany, skuteczność środków
+- konspekt PDF generowany z aktualnego planu
 
 ## Uruchomienie
-1. Zainstaluj Python 3.11+.
-2. W katalogu aplikacji: `pip install -r requirements.txt`
-3. Uruchom: `streamlit run app.py`
-4. Otwórz adres pokazany przez Streamlit.
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
 
-To nadal prototyp lokalny. Dane są zapisywane w `data/state.json` i plikach bibliotek JSON.
+Dane robocze są zapisywane lokalnie w `data/state.json`.
+
+
+## v1.1 — profil środka i lepszy dobór
+- każdy środek FEA otrzymuje automatyczny profil PER/DEC/EXE, presji, transferu i złożoności,
+- dobór uwzględnia etap R/W/P/G i decyzję PROGRESS/CONTINUE/REGRESS/CHANGE,
+- dopasowanie tekstowe jest tylko jednym z elementów, nie głównym kryterium,
+- konspekt pokazuje „Dlaczego ten środek”,
+- Biblioteka FEA pokazuje profil Presja 1–5 i Transfer 1–5.
